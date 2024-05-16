@@ -69,6 +69,8 @@ function saveRecipesToStorage(recipes) {
  * <button>.
  */
 function initFormHandler() {
+	const main = document.querySelector("main");
+
 	// B2. TODO - Get a reference to the <form> element
 	const form = document.querySelector("form");
 
@@ -83,7 +85,6 @@ function initFormHandler() {
 		//            make this easier to read), and then extract the keys and corresponding
 		//            values from the FormData object and insert them into recipeObject
 		const recipeObject = {};
-		formData.forEach()
 		for (const pair of formData.entries()) {
 			recipeObject[pair[0]] = pair[1];
 		}
@@ -95,7 +96,6 @@ function initFormHandler() {
 		recipeCard.data = recipeObject;
 
 		// B8. TODO - Append this new <recipe-card> to <main>
-		const main = document.querySelector("main");
 		main.appendChild(recipeCard);
 
 		// B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
@@ -103,18 +103,18 @@ function initFormHandler() {
 		const recipes = getRecipesFromStorage();
 		recipes.push(recipeObject);
 		saveRecipesToStorage(recipes);
+	});
 
-		// B10. TODO - Get a reference to the "Clear Local Storage" button
-		const clearLocalStorageButton = form.querySelector("button.danger");
+	// B10. TODO - Get a reference to the "Clear Local Storage" button
+	const clearLocalStorageButton = form.querySelector("button.danger");
 
-		// B11. TODO - Add a click event listener to clear local storage button
-		clearLocalStorageButton.addEventListener('click', event => {
-			// Steps B12 & B13 will occur inside the event listener from step B11
-			// B12. TODO - Clear the local storage
-			localStorage.clear();
+	// B11. TODO - Add a click event listener to clear local storage button
+	clearLocalStorageButton.addEventListener('click', event => {
+		// Steps B12 & B13 will occur inside the event listener from step B11
+		// B12. TODO - Clear the local storage
+		localStorage.clear();
 
-			// B13. TODO - Delete the contents of <main>
-			main.innerHTML = "";
-		});
+		// B13. TODO - Delete the contents of <main>
+		main.innerHTML = "";		
 	});
 }
